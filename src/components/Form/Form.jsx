@@ -1,4 +1,5 @@
 import useLocalStorage from '../../CastomHooks/useLocalStorage';
+import css from './Form.module.css';
 
 const Form = () => {
   const [query, setQuery] = useLocalStorage('query');
@@ -18,21 +19,29 @@ const Form = () => {
   };
 
   return (
-    <form>
-      <input
-        onChange={handleChange}
-        type="text"
-        name="query"
-        placeholder="Search images and photos"
-        value={query}
-      />
-      <input
-        onChange={handleChange}
-        type="text"
-        name="name"
-        placeholder="Name"
-        value={name}
-      />
+    <form className={css.searchForm}>
+      <label className={css['searchForm-label']}>
+        Images
+        <input
+          className={css['searchForm-input']}
+          onChange={handleChange}
+          type="text"
+          name="query"
+          placeholder="Search images and photos"
+          value={query}
+        />
+      </label>
+      <label className={css['searchForm-label']}>
+        Name
+        <input
+          className={css['searchForm-input']}
+          onChange={handleChange}
+          type="text"
+          name="name"
+          placeholder="Input your name"
+          value={name}
+        />
+      </label>
     </form>
   );
 };
