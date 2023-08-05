@@ -1,17 +1,6 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import useLocalStorage from '../../CastomHooks/useLocalStorage';
 
 const Form = () => {
-  const useLocalStorage = key => {
-    const [state, setState] = useState(
-      () => JSON.parse(window.localStorage.getItem(key)) ?? ''
-    );
-    useEffect(() => {
-      window.localStorage.setItem(key, JSON.stringify(state));
-    }, [key, state]);
-    return [state, setState];
-  };
-
   const [query, setQuery] = useLocalStorage('query');
   const [name, setName] = useLocalStorage('name');
   const handleChange = event => {
